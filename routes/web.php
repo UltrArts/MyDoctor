@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\{
+    Controller,
+    DoctorController
+};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +25,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 });
+
+Route::get('/dashboard', [DoctorController::class, 'index']
+)->name('dashboard');
